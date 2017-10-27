@@ -33,5 +33,6 @@ function onReady() {
 }
 
 window.onload = function() {
-
+  OnReady()_
+  
 };
