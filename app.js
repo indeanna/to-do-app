@@ -1,40 +1,53 @@
 function onReady() {
   const toDos = [];
-  const addToDoForm = document.getElementById(addToDoForm);
+  const addToDoForm = document.getElementById('addToDoForm');
+  const delButton = document.getElementById('delButton');
 
-    function createNewToDo(){
-      const newToDoText = document.getElementById(newToDoText);
+
+    function createNewToDo() {
+      const newToDoText = document.getElementById('newToDoText');
       if (!newToDoText) {return}
       toDos.push({
           title: newToDoText.value,
           complete: false
       });
-newToDoText.value = '';
+      newToDoText.value = '';
+}
+      renderTheUI(toDos);
     }
-function renderTheUI(toDos) {
-  const toDoList = document.getElementById(toDoList);
+    function renderTheUI(toDos) {
+      const toDoList = document.getElementById('toDoList');
 
-  toDoLIst.textContent = '';
+      toDoList.textContent = '';
 
-  renderTheUI(toDos);
+      toDos.forEach(function(toDo) {
+        const newLi = document.createElement('li');
+        const checkbox = document.createElement('input');
+        const delButton = document.createElement('button');
+        checkbox.type = "checkbox";
+        delButton.type = "button";
 
-toDos.forEach(function(toDo) {
-  const newLi = document.createElement(li);
-  const checkbox = document.createElement(input);
-  checkbox.type = "checkbox";
+        newLi.textContent = toDo.title;
+        delButton.textContent = "Delete";
 
-  newLI.textContent = toDo.title;
+        toDoList.appendChild(newLi);
+        newLi.appendChild(checkbox);
+        newLi.appendChild(delButton);
 
-  toDoList.appendChild(newLi);
-  newLi.appendChild(checkbox);
-});
-}
-addToDoForm.addEventListener(submit, event => {
+        delButton.addEventListener("click", event => {
+         event.preventDefault();
+
+    });
+  });
+    }
+
+addToDoForm.addEventListener('submit', event => {
   event.preventDefault();
-  createNewToDo();
-})
-renderTheUI(toDos);
-}
+      createNewToDo();
+});
+
+
+
 window.onload = function() {
   onReady()
 };
