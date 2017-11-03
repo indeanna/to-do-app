@@ -2,23 +2,22 @@ function onReady() {
   const toDos = [];
   const addToDoForm = document.getElementById('addToDoForm');
   const delButton = document.getElementById('delButton');
-  toDos.index = 0;
-  console.log("onready func");
-
+  let index = 0;
+ 
     function createNewToDo() {
       const newToDoText = document.getElementById('newToDoText');
-      if (!newToDoText) {return}
-      toDos.index++;
+      if (!newToDoText) {return}     
       toDos.push({
           title: newToDoText.value,
           complete: false
+          index: index
+          index++;
 
-
-      });          console.log("index");
+      });          
 
       newToDoText.value = '';
       renderTheUI(toDos);
-      console.log("new todos");
+      
 
     }
     function renderTheUI(toDos) {
@@ -44,18 +43,16 @@ function onReady() {
 
       delButton.addEventListener("click", event => {
          event.preventDefault();
-         toDos.splice(toDos.index, 1);
-         console.log(toDos.index);
+         toDo.splice(toDos.index, 1);
+        
     });
 });
 }
   addToDoForm.addEventListener('submit', event => {
     event.preventDefault();
     createNewToDo();
-    console.log("submit event");
+   
 })
-
-console.log("render UI");
 }
 window.onload = function() {
   onReady()
