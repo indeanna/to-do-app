@@ -9,11 +9,9 @@ function onReady() {
       if (!newToDoText) {return}     
       toDos.push({
           title: newToDoText.value,
-          complete: false
-          index: index
-          index++;
-
-      });          
+          complete: false,
+          index: index++
+       });          
 
       newToDoText.value = '';
       renderTheUI(toDos);
@@ -42,8 +40,7 @@ function onReady() {
       newLi.appendChild(delButton);
 
       delButton.addEventListener("click", event => {
-         event.preventDefault();
-         toDo.splice(toDo.index, 1);
+        toDo.splice(toDo.index, 1);
         
     });
 });
