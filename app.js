@@ -41,7 +41,7 @@ function onReady() {
 
       delButton.addEventListener("click", event => {
         toDo.splice(toDo.index, 1);
-        
+        renderTheUI(todo);
     });
 });
 }
