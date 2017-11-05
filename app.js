@@ -3,19 +3,19 @@ function onReady() {
   const addToDoForm = document.getElementById('addToDoForm');
   const delButton = document.getElementById('delButton');
   let index = 0;
- 
+
     function createNewToDo() {
       const newToDoText = document.getElementById('newToDoText');
-      if (!newToDoText) {return}     
+      if (!newToDoText) {return}
       toDos.push({
           title: newToDoText.value,
           complete: false,
           index: index++
-       });          
+       });
 
       newToDoText.value = '';
       renderTheUI(toDos);
-      
+
 
     }
     function renderTheUI(toDos) {
@@ -40,15 +40,15 @@ function onReady() {
       newLi.appendChild(delButton);
 
       delButton.addEventListener("click", event => {
-        toDo.splice(toDo.index, 1);
-        renderTheUI(todo);
+        toDos.splice(toDo.index, 1);
+        renderTheUI(toDos);
     });
 });
 }
   addToDoForm.addEventListener('submit', event => {
     event.preventDefault();
     createNewToDo();
-   
+
 })
 }
 window.onload = function() {
